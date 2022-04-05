@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import md5 from 'crypto-js/md5';
 import thunkToken from '../redux/actions/thunkToken';
-// import newAction from '../redux/actions/index';
+import newAction from '../redux/actions/index';
 
 class Login extends Component {
   constructor() {
@@ -18,10 +19,16 @@ class Login extends Component {
   }
 
   handleClick = async () => {
-    const { email } = this.state;
-    const { getToken, history } = this.props;
+    const { email, name } = this.state;
+    const { getToken, history, dispatchAction } = this.props;
 
     await getToken(email);
+
+    const tokenImg = md5(email).toString();
+    const img = `https://www.gravatar.com/avatar/${tokenImg}`;
+    dispatchAction('USER_IMG', img);
+    dispatchAction('USER_NAME', name);
+    dispatchAction('USER_EMAIL', email);
     history.push('/play');
   }
 
@@ -82,11 +89,12 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   getToken: async (email) => dispatch(await thunkToken(email)),
-  // dispatchAction: (type, value) => dispatch(newAction(type, value)),
+  dispatchAction: (type, value) => dispatch(newAction(type, value)),
 });
 
 Login.propTypes = {
   getToken: PropTypes.func,
+  dispatchAction: PropTypes.func,
 }.isRequired;
 
 export default connect(null, mapDispatchToProps)(Login);

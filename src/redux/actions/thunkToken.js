@@ -5,7 +5,9 @@ const recieveToken = (token) => ({
   token,
 });
 
-export default thunkToken = (email) => async (dispatch) => {
+const thunkToken = (email) => async (dispatch) => {
   const token = await fetchTokens(email);
   dispatch(recieveToken(token));
 };
+
+export default thunkToken;
