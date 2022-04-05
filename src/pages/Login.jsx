@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import thunkToken from '../redux/actions/thunkToken';
+// import newAction from '../redux/actions/index';
 
 class Login extends Component {
   constructor() {
@@ -10,6 +15,14 @@ class Login extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleClick = async () => {
+    const { email } = this.state;
+    const { getToken, history } = this.props;
+
+    await getToken(email);
+    history.push('/play');
   }
 
   handleChange({ target }) {
@@ -27,7 +40,7 @@ class Login extends Component {
     const { name, email, disabledBtn } = this.state;
 
     return (
-      <form action="">
+      <div>
         <label htmlFor="name">
           <input
             type="text"
@@ -53,10 +66,27 @@ class Login extends Component {
           value="Play"
           data-testid="btn-play"
           disabled={ disabledBtn }
+          onClick={ this.handleClick }
         />
-      </form>
+        <Link to="/settings">
+          <input
+            type="button"
+            value="Edit"
+            data-testid="btn-settings"
+          />
+        </Link>
+      </div>
     );
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  getToken: async (email) => dispatch(await thunkToken(email)),
+  // dispatchAction: (type, value) => dispatch(newAction(type, value)),
+});
+
+Login.propTypes = {
+  getToken: PropTypes.func,
+}.isRequired;
+
+export default connect(null, mapDispatchToProps)(Login);
