@@ -13,6 +13,11 @@ const token = (state = INITIAL_STATE, action) => {
     return { ...state, gravatarEmail: action.payload };
   }
 
+  if (action.type === 'NEW_ANSWER') {
+    const newScore = state.score + action.payload;
+    return { ...state, score: newScore };
+  }
+
   return state;
 };
 
