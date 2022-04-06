@@ -22,6 +22,7 @@ class Play extends React.Component {
   }
 
   handleClick = () => {
+    this.showNextBtn();
     const { results } = this.props;
     const { index } = this.state;
 
@@ -37,7 +38,8 @@ class Play extends React.Component {
   }
 
   showNextBtn = () => {
-    this.setState({ showNext: true });
+    const { showNext } = this.state;
+    this.setState({ showNext: !showNext });
   }
 
   render() {
