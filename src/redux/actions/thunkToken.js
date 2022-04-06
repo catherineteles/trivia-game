@@ -5,8 +5,8 @@ const recieveToken = (token) => ({
   token,
 });
 
-const thunkToken = (email) => async (dispatch) => {
-  const token = await fetchTokens(email);
+const thunkToken = () => async (dispatch) => {
+  const token = await fetchTokens();
   dispatch(recieveToken(token));
 };
 
