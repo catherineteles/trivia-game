@@ -5,20 +5,6 @@ import newAction from '../redux/actions/index';
 
 // quando eu clico na resposta, ele randomiza elas dnv
 class Question extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      options: undefined,
-    };
-  }
-
-  componentDidMount() {
-    const { result } = this.props;
-    const options = this.formatAnswers(result);
-    this.setState({ options });
-  }
-
   formatAnswers = ({ correct_answer: correct, incorrect_answers: incorrect }) => {
     const magicNumber = 0.5;
     const formated = incorrect.map((element, index) => (
@@ -44,15 +30,21 @@ class Question extends Component {
     const timer = 1;
     const score = isCorrect ? (dez + (timer * multiplyBy)) : 0;
 
+    const newAnswer = { question: result.question,
+      correct: result.correct_answer,
+      chosen: target.value,
+    };
+
+    console.log(newAnswer);
     showNextBtn();
-    dispatchAction('NEW_ANSWER', score);
+    dispatchAction('NEW_ANSWER', newAnswer);
+    dispatchAction('ADD_SCORE', score);
   }
 
   render() {
-
-    const { result, showNextBtn, answered } = this.props;
+    const { result, answered } = this.props;
     const { category, question } = result;
-    const { options } = this.state;
+    const options = this.formatAnswers(result);
 
     return (
       <div>
@@ -65,6 +57,7 @@ class Question extends Component {
               data-testid={ e.type }
               key={ e.type }
               name={ e.type }
+              value={ e.label }
               className={ answered ? e.type.split('-')[0] : '' }
               disabled={ answered }
               onClick={ this.handleClick }
