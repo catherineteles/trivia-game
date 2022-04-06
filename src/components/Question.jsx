@@ -49,7 +49,8 @@ class Question extends Component {
   }
 
   render() {
-    const { result, answered } = this.props;
+
+    const { result, showNextBtn, answered } = this.props;
     const { category, question } = result;
     const { options } = this.state;
 
