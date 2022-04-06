@@ -14,7 +14,7 @@ class Question extends Component {
   }
 
   render() {
-    const { result } = this.props;
+    const { result, showNextBtn } = this.props;
     const { category, question } = result;
 
     return (
@@ -27,7 +27,7 @@ class Question extends Component {
               type="button"
               data-testid={ e.type }
               key={ e.type }
-              onClick={ () => 'f' }
+              onClick={ () => showNextBtn() }
             >
               { e.label }
             </button>

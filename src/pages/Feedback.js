@@ -1,17 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 
 class Feedback extends React.Component {
   render() {
-    const minScore = 3;
     const { savedScore } = this.props;
+    const minPoints = 3;
     return (
       <div>
         <Header />
-        { savedScore < minScore ? (
-          <h2 data-testid="feedback-text">Could be better...</h2>)
-          : (<h2 data-testid="feedback-text">Well Done!</h2>)}
+        {savedScore < minPoints ? (
+          <h3 data-testid="feedback-text">Could be better...</h3>)
+          : <h3 data-testid="feedback-text">Well Done!</h3>}
       </div>
     );
   }

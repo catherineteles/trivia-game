@@ -11,6 +11,7 @@ class Play extends React.Component {
     this.state = {
       index: 0,
       finished: false,
+      showNext: false,
     };
   }
 
@@ -21,6 +22,7 @@ class Play extends React.Component {
   }
 
   handleClick = () => {
+    this.showNextBtn();
     const { results } = this.props;
     const { index } = this.state;
 
@@ -30,36 +32,43 @@ class Play extends React.Component {
     // }
     this.setState((state) => ({ index: state.index + 1 }), () => {
       if (results.length === (index + 2)) {
-        this.setState({ finished: true });
+        this.setState({ showNext: false, finished: true });
       }
     });
   }
 
+  showNextBtn = () => {
+    const { showNext } = this.state;
+    this.setState({ showNext: !showNext });
+  }
+
   render() {
     const { results } = this.props;
-    const { index, finished } = this.state;
+    const { index, finished, showNext } = this.state;
 
     return (
       <div>
         <Header />
-        { results.length > 0 && <Question result={ results[index] } />}
-        {
-          finished
-            ? (
-              <button
-                type="button"
-                onClick={ () => 'F' }
-              >
-                Feedback
-              </button>)
-            : (
-              <button
-                type="button"
-                onClick={ this.handleClick }
-              >
-                Next
-              </button>)
-        }
+        { results.length > 0 && <Question
+          showNextBtn={ this.showNextBtn }
+          result={ results[index] }
+        />}
+        { finished
+             && (
+               <button
+                 type="button"
+                 onClick={ () => 'F' }
+               >
+                 Feedback
+               </button>)}
+        { showNext && (
+          <button
+            data-testid="btn-next"
+            type="button"
+            onClick={ this.handleClick }
+          >
+            Next
+          </button>)}
       </div>
     );
   }
