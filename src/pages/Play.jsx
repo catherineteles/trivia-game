@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import thunkQuestion from '../redux/actions/thunkQuestion';
 import Header from '../components/Header';
@@ -27,7 +28,7 @@ class Play extends React.Component {
     // if (results.length === (index + 2)) {
     //   this.setState({ finished: true });
     // }
-    this.setState((state) => ({ index: state.index + 1 }) , () => {
+    this.setState((state) => ({ index: state.index + 1 }), () => {
       if (results.length === (index + 2)) {
         this.setState({ finished: true });
       }
@@ -76,5 +77,11 @@ function mapDispatchToProps(dispatch) {
     getQuestions: (token) => dispatch(thunkQuestion(token)),
   };
 }
+
+Play.propTypes = {
+  token: PropTypes.string,
+  results: PropTypes.array,
+  getQuestions: PropTypes.func,
+}.isRequired;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Play);
