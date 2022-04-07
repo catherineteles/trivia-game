@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 import thunkQuestion from '../redux/actions/thunkQuestion';
 import Header from '../components/Header';
 import Question from '../components/Question';
+import Timer from '../components/Timer';
 
 class Play extends React.Component {
   constructor() {
     super();
     this.state = {
       index: 0,
-      clock: 30,
+      timer: 0,
       showNext: false,
       answered: false,
     };
@@ -20,7 +21,7 @@ class Play extends React.Component {
     const { token, getQuestions } = this.props;
 
     getQuestions(token);
-    this.clockProgress();
+    // this.clockProgress();
   }
 
   handleClick = () => {
@@ -28,7 +29,7 @@ class Play extends React.Component {
     const { results } = this.props;
     const { index } = this.state;
 
-    this.clockProgress();
+    // this.clockProgress();
 
     if (results.length === (index + 1)) {
       this.setState({ showNext: false });
@@ -36,30 +37,36 @@ class Play extends React.Component {
       history.push('/feedback');
     }
     this.setState((state) => (
-      { index: state.index + 1, answered: false, clock: 30 }
+      // { index: state.index + 1, answered: false, clock: 30 }
+      { index: state.index + 1, answered: false }
     ));
   }
 
-  clockProgress = () => {
-    const interval = 1000;
+  // clockProgress = () => {
+  //   const interval = 1000;
 
-    const increase = setInterval(() => this.setState((state) => {
-      if (!state.clock || state.answered) {
-        clearInterval(increase);
-        return { answered: true, showNext: true };
-      }
-      return { clock: state.clock - 1 };
-    }), interval);
-  }
+  //   const increase = setInterval(() => this.setState((state) => {
+  //     if (!state.clock || state.answered) {
+  //       clearInterval(increase);
+  //       return { answered: true, showNext: true };
+  //     }
+  //     return { clock: state.clock - 1 };
+  //   }), interval);
+  // }
 
   showNextBtn = () => {
     const { showNext } = this.state;
     this.setState({ showNext: !showNext, answered: true });
   };
 
+  getTimer = (time) => {
+    console.log(time);
+    this.setState({ timer: time });
+  };
+
   render() {
     const { results } = this.props;
-    const { index, answered, showNext, clock } = this.state;
+    const { index, answered, showNext, timer } = this.state;
 
     return (
       <div>
@@ -68,6 +75,7 @@ class Play extends React.Component {
           showNextBtn={ this.showNextBtn }
           answered={ answered }
           result={ results[index] }
+          timer={ timer }
         />}
         { showNext && (
           <button
@@ -77,7 +85,12 @@ class Play extends React.Component {
           >
             Next
           </button>)}
-        <p>{ clock }</p>
+        {/* <p>{ clock }</p> */}
+        <Timer
+          answered={ answered }
+          showNext={ showNext }
+          getTimer={ this.getTimer }
+        />
       </div>
     );
   }

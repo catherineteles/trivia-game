@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import newAction from '../redux/actions/index';
+// import Timer from './Timer';
 
 // quando eu clico na resposta, ele randomiza elas dnv
 class Question extends Component {
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     timer: 30,
+  //   };
+  // }
+
   formatAnswers = ({ correct_answer: correct, incorrect_answers: incorrect }) => {
     const magicNumber = 0.5;
     const formated = incorrect.map((element, index) => (
@@ -20,14 +28,14 @@ class Question extends Component {
     target.className = 'selected';
     const isCorrect = target.name.split('-')[0] === 'correct';
 
-    const { result, dispatchAction, showNextBtn } = this.props;
+    const { result, dispatchAction, showNextBtn, timer } = this.props;
+    // const { timer } = this.state;
     const { difficulty } = result;
     const magicNum = 3;
     const isItHard = difficulty === 'hard' ? magicNum : 1;
     const multiplyBy = difficulty === 'medium' ? 2 : isItHard;
 
     const dez = 10;
-    const timer = 1;
     const score = isCorrect ? (dez + (timer * multiplyBy)) : 0;
     const assertion = isCorrect ? 1 : 0;
     showNextBtn();
@@ -35,8 +43,15 @@ class Question extends Component {
     dispatchAction('ADD_SCORE', score);
   }
 
+  // getTimer = (time) => {
+  //   console.log(time);
+  //   this.setState({ timer: time });
+  // };
+
   render() {
+    console.log('question');
     const { result, answered } = this.props;
+    // const { timer } = this.state;
     const { category, question } = result;
     const options = this.formatAnswers(result);
 
@@ -60,6 +75,11 @@ class Question extends Component {
             </button>
           )) }
         </div>
+        {/* <Timer
+          answered={ answered }
+          showNextBtn={ showNextBtn }
+          getTimer={ this.getTimer }
+        /> */}
       </div>
     );
   }
@@ -69,6 +89,7 @@ Question.propTypes = {
   result: PropTypes.arrayOf(),
   dispatchAction: PropTypes.func,
   showNextBtn: PropTypes.func,
+  timer: PropTypes.number,
 }.isRequired;
 
 function mapDispatchToProps(dispatch) {
