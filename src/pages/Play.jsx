@@ -11,6 +11,8 @@ class Play extends React.Component {
     this.state = {
       index: 0,
       finished: false,
+      clock: 0,
+      disabledBtn: false,
     };
   }
 
@@ -18,31 +20,51 @@ class Play extends React.Component {
     const { token, getQuestions } = this.props;
 
     getQuestions(token);
+    this.clockProgress();
   }
 
   handleClick = () => {
     const { results } = this.props;
     const { index } = this.state;
 
-    console.log(results.length, index);
-    // if (results.length === (index + 2)) {
-    //   this.setState({ finished: true });
-    // }
-    this.setState((state) => ({ index: state.index + 1 }), () => {
+    this.clockProgress();
+
+    this.setState((state) => (
+      { index: state.index + 1, disabledBtn: false, clock: 0 }
+    ), () => {
       if (results.length === (index + 2)) {
         this.setState({ finished: true });
       }
     });
   }
 
+  clockProgress = () => {
+    const interval = 1000;
+    const magicNumber = 30;
+
+    const increase = setInterval(() => this.setState((state) => {
+      if (state.clock < magicNumber) {
+        return { clock: state.clock + 1 };
+      }
+      clearInterval(increase);
+      return { clock: 0, disabledBtn: true };
+    }), interval);
+  }
+
   render() {
     const { results } = this.props;
-    const { index, finished } = this.state;
+    const { index, finished, clock, disabledBtn } = this.state;
 
     return (
       <div>
         <Header />
-        { results.length > 0 && <Question result={ results[index] } />}
+        {
+          results.length > 0
+          && <Question
+            disabledBtn={ disabledBtn }
+            result={ results[index] }
+          />
+        }
         {
           finished
             ? (
@@ -60,6 +82,7 @@ class Play extends React.Component {
                 Next
               </button>)
         }
+        <p>{ clock }</p>
       </div>
     );
   }
