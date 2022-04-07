@@ -25,13 +25,12 @@ class Play extends React.Component {
     this.showNextBtn();
     const { results } = this.props;
     const { index } = this.state;
-
+    if (results.length === (index + 1)) {
+      this.setState({ showNext: false });
+      const { history } = this.props;
+      history.push('/feedback');
+    }
     this.setState((state) => ({ index: state.index + 1, answered: false }), () => {
-      if (results.length === (index + 2)) {
-        this.setState({ showNext: false });
-        const { history } = this.props;
-        history.push('/feedback');
-      }
     });
   }
 
