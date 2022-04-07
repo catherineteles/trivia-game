@@ -29,15 +29,9 @@ class Question extends Component {
     const dez = 10;
     const timer = 1;
     const score = isCorrect ? (dez + (timer * multiplyBy)) : 0;
-
-    // const newAnswer = { question: result.question,
-    //   correct: result.correct_answer,
-    //   chosen: target.value,
-    // };
-
-    // console.log(newAnswer);
+    const assertion = isCorrect ? 1 : 0;
     showNextBtn();
-    // dispatchAction('NEW_ANSWER', newAnswer);
+    dispatchAction('ADD_ASSERTION', assertion);
     dispatchAction('ADD_SCORE', score);
   }
 

@@ -18,9 +18,9 @@ const token = (state = INITIAL_STATE, action) => {
     return { ...state, score: newScore };
   }
 
-  if (action.type === 'NEW_ANSWER') {
-    const newLog = [...state.log, action.payload];
-    return { ...state, log: newLog };
+  if (action.type === 'ADD_ASSERTION') {
+    const newAssertion = state.assertions + action.payload;
+    return { ...state, assertions: newAssertion };
   }
 
   return state;
