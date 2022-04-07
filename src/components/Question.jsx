@@ -30,14 +30,14 @@ class Question extends Component {
     const timer = 1;
     const score = isCorrect ? (dez + (timer * multiplyBy)) : 0;
 
-    const newAnswer = { question: result.question,
-      correct: result.correct_answer,
-      chosen: target.value,
-    };
+    // const newAnswer = { question: result.question,
+    //   correct: result.correct_answer,
+    //   chosen: target.value,
+    // };
 
-    console.log(newAnswer);
+    // console.log(newAnswer);
     showNextBtn();
-    dispatchAction('NEW_ANSWER', newAnswer);
+    // dispatchAction('NEW_ANSWER', newAnswer);
     dispatchAction('ADD_SCORE', score);
   }
 

@@ -30,15 +30,14 @@ class Play extends React.Component {
 
     this.clockProgress();
 
+    if (results.length === (index + 1)) {
+      this.setState({ showNext: false });
+      const { history } = this.props;
+      history.push('/feedback');
+    }
     this.setState((state) => (
       { index: state.index + 1, answered: false, clock: 0 }
-    ), () => {
-      if (results.length === (index + 2)) {
-        this.setState({ showNext: false });
-        const { history } = this.props;
-        history.push('/feedback');
-      }
-    });
+    ));
   }
 
   clockProgress = () => {
