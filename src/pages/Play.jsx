@@ -10,6 +10,7 @@ class Play extends React.Component {
     super();
     this.state = {
       index: 0,
+      clock: 30,
       showNext: false,
       answered: false,
     };
@@ -19,29 +20,46 @@ class Play extends React.Component {
     const { token, getQuestions } = this.props;
 
     getQuestions(token);
+    this.clockProgress();
   }
 
   handleClick = () => {
     this.showNextBtn();
     const { results } = this.props;
     const { index } = this.state;
+
+    this.clockProgress();
+
     if (results.length === (index + 1)) {
       this.setState({ showNext: false });
       const { history } = this.props;
       history.push('/feedback');
     }
-    this.setState((state) => ({ index: state.index + 1, answered: false }), () => {
-    });
+    this.setState((state) => (
+      { index: state.index + 1, answered: false, clock: 30 }
+    ));
+  }
+
+  clockProgress = () => {
+    const interval = 1000;
+
+    const increase = setInterval(() => this.setState((state) => {
+      if (!state.clock || state.answered) {
+        clearInterval(increase);
+        return { answered: true, showNext: true };
+      }
+      return { clock: state.clock - 1 };
+    }), interval);
   }
 
   showNextBtn = () => {
     const { showNext } = this.state;
     this.setState({ showNext: !showNext, answered: true });
-  }
+  };
 
   render() {
     const { results } = this.props;
-    const { index, answered, showNext } = this.state;
+    const { index, answered, showNext, clock } = this.state;
 
     return (
       <div>
@@ -51,7 +69,6 @@ class Play extends React.Component {
           answered={ answered }
           result={ results[index] }
         />}
-
         { showNext && (
           <button
             data-testid="btn-next"
@@ -60,6 +77,7 @@ class Play extends React.Component {
           >
             Next
           </button>)}
+        <p>{ clock }</p>
       </div>
     );
   }
