@@ -10,7 +10,7 @@ class Play extends React.Component {
     super();
     this.state = {
       index: 0,
-      clock: 0,
+      clock: 30,
       showNext: false,
       answered: false,
     };
@@ -36,20 +36,19 @@ class Play extends React.Component {
       history.push('/feedback');
     }
     this.setState((state) => (
-      { index: state.index + 1, answered: false, clock: 0 }
+      { index: state.index + 1, answered: false, clock: 30 }
     ));
   }
 
   clockProgress = () => {
     const interval = 1000;
-    const magicNumber = 30;
 
     const increase = setInterval(() => this.setState((state) => {
-      if (state.clock < magicNumber) {
-        return { clock: state.clock + 1 };
+      if (!state.clock || state.answered) {
+        clearInterval(increase);
+        return { answered: true, showNext: true };
       }
-      clearInterval(increase);
-      return { clock: 0, answered: true, showNext: true };
+      return { clock: state.clock - 1 };
     }), interval);
   }
 
