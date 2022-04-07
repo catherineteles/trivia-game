@@ -10,9 +10,9 @@ class Play extends React.Component {
     super();
     this.state = {
       index: 0,
-      finished: false,
       clock: 0,
-      disabledBtn: false,
+      showNext: false,
+      answered: false,
     };
   }
 
@@ -24,16 +24,19 @@ class Play extends React.Component {
   }
 
   handleClick = () => {
+    this.showNextBtn();
     const { results } = this.props;
     const { index } = this.state;
 
     this.clockProgress();
 
     this.setState((state) => (
-      { index: state.index + 1, disabledBtn: false, clock: 0 }
+      { index: state.index + 1, answered: false, clock: 0 }
     ), () => {
       if (results.length === (index + 2)) {
-        this.setState({ finished: true });
+        this.setState({ showNext: false });
+        const { history } = this.props;
+        history.push('/feedback');
       }
     });
   }
@@ -47,41 +50,35 @@ class Play extends React.Component {
         return { clock: state.clock + 1 };
       }
       clearInterval(increase);
-      return { clock: 0, disabledBtn: true };
+      return { clock: 0, answered: true, showNext: true };
     }), interval);
   }
 
+  showNextBtn = () => {
+    const { showNext } = this.state;
+    this.setState({ showNext: !showNext, answered: true });
+  };
+
   render() {
     const { results } = this.props;
-    const { index, finished, clock, disabledBtn } = this.state;
+    const { index, answered, showNext, clock } = this.state;
 
     return (
       <div>
         <Header />
-        {
-          results.length > 0
-          && <Question
-            disabledBtn={ disabledBtn }
-            result={ results[index] }
-          />
-        }
-        {
-          finished
-            ? (
-              <button
-                type="button"
-                onClick={ () => 'F' }
-              >
-                Feedback
-              </button>)
-            : (
-              <button
-                type="button"
-                onClick={ this.handleClick }
-              >
-                Next
-              </button>)
-        }
+        { results.length > 0 && <Question
+          showNextBtn={ this.showNextBtn }
+          answered={ answered }
+          result={ results[index] }
+        />}
+        { showNext && (
+          <button
+            data-testid="btn-next"
+            type="button"
+            onClick={ this.handleClick }
+          >
+            Next
+          </button>)}
         <p>{ clock }</p>
       </div>
     );
