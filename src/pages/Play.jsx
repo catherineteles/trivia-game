@@ -10,8 +10,8 @@ class Play extends React.Component {
     super();
     this.state = {
       index: 0,
-      finished: false,
       showNext: false,
+      answered: false,
     };
   }
 
@@ -26,41 +26,33 @@ class Play extends React.Component {
     const { results } = this.props;
     const { index } = this.state;
 
-    console.log(results.length, index);
-    // if (results.length === (index + 2)) {
-    //   this.setState({ finished: true });
-    // }
-    this.setState((state) => ({ index: state.index + 1 }), () => {
+    this.setState((state) => ({ index: state.index + 1, answered: false }), () => {
       if (results.length === (index + 2)) {
-        this.setState({ showNext: false, finished: true });
+        this.setState({ showNext: false });
+        const { history } = this.props;
+        history.push('/feedback');
       }
     });
   }
 
   showNextBtn = () => {
     const { showNext } = this.state;
-    this.setState({ showNext: !showNext });
+    this.setState({ showNext: !showNext, answered: true });
   }
 
   render() {
     const { results } = this.props;
-    const { index, finished, showNext } = this.state;
+    const { index, answered, showNext } = this.state;
 
     return (
       <div>
         <Header />
         { results.length > 0 && <Question
           showNextBtn={ this.showNextBtn }
+          answered={ answered }
           result={ results[index] }
         />}
-        { finished
-             && (
-               <button
-                 type="button"
-                 onClick={ () => 'F' }
-               >
-                 Feedback
-               </button>)}
+
         { showNext && (
           <button
             data-testid="btn-next"
