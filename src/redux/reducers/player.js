@@ -1,4 +1,4 @@
-const INITIAL_STATE = { score: 0 };
+const INITIAL_STATE = { score: 0, assertions: 0 };
 
 const token = (state = INITIAL_STATE, action) => {
   if (action.type === 'USER_IMG') {
