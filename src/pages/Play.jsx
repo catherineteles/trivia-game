@@ -12,6 +12,7 @@ class Play extends React.Component {
     this.state = {
       index: 0,
       clock: 30,
+      timerFreaze: 0,
       showNext: false,
       answered: false,
     };
@@ -65,7 +66,7 @@ class Play extends React.Component {
 
   render() {
     const { results } = this.props;
-    const { index, answered, showNext, clock } = this.state;
+    const { index, answered, showNext, clock, timerFreaze } = this.state;
 
     return (
       <div>
@@ -74,6 +75,7 @@ class Play extends React.Component {
           showNextBtn={ this.showNextBtn }
           answered={ answered }
           result={ results[index] }
+          timer={ timerFreaze }
         />}
         { showNext && (
           <button

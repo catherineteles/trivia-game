@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import RankCard from '../components/RankCard';
 import { getSavedRanking } from '../services/getRank';
 
 class Rank extends React.Component {
   render() {
+    const { history } = this.props;
     const rank = getSavedRanking();
     return (
       <div className="container">
@@ -21,9 +23,20 @@ class Rank extends React.Component {
               </li>
             ))}
         </ul>
+        <button
+          type="button"
+          data-testid="btn-go-home"
+          onClick={ () => history.push('/') }
+        >
+          Home
+        </button>
       </div>
     );
   }
 }
+
+Rank.propTypes = {
+  history: PropTypes.objectOf(),
+}.isRequired;
 
 export default Rank;
