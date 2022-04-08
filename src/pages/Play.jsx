@@ -20,7 +20,6 @@ class Play extends React.Component {
 
   componentDidMount() {
     const { token, getQuestions } = this.props;
-
     getQuestions(token);
     this.clockProgress();
   }
@@ -37,6 +36,7 @@ class Play extends React.Component {
       const { history } = this.props;
       return history.push('/feedback');
     }
+
     this.setState((state) => (
       { index: state.index + 1, answered: false, clock: 30 }
     ));
@@ -53,7 +53,7 @@ class Play extends React.Component {
     const increase = setInterval(() => this.setState((state) => {
       if (!state.clock || state.answered) {
         clearInterval(increase);
-        return { answered: true, showNext: true };
+        return { answered: true, showNext: true, freezeTime: state.clock };
       }
       return { clock: state.clock - 1 };
     }), interval);
@@ -67,7 +67,6 @@ class Play extends React.Component {
   render() {
     const { results } = this.props;
     const { index, answered, showNext, clock, timerFreaze } = this.state;
-
     return (
       <div>
         <Header />
