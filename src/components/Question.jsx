@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import newAction from '../redux/actions/index';
-// import Timer from './Timer';
 
-// quando eu clico na resposta, ele randomiza elas dnv
 class Question extends Component {
   constructor() {
     super();
@@ -20,7 +18,7 @@ class Question extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    // simulação da key
+    // simulação da key - conversa com Du Pedroso
     const { index } = this.props;
     if (index !== prevProps.index) {
       const { result } = this.props;
@@ -45,7 +43,6 @@ class Question extends Component {
     const isCorrect = target.name.split('-')[0] === 'correct';
 
     const { result, dispatchAction, showNextBtn, timer } = this.props;
-    // const { timer } = this.state;
     const { difficulty } = result;
     const magicNum = 3;
     const isItHard = difficulty === 'hard' ? magicNum : 1;
@@ -59,15 +56,8 @@ class Question extends Component {
     dispatchAction('ADD_SCORE', score);
   }
 
-  // getTimer = (time) => {
-  //   console.log(time);
-  //   this.setState({ timer: time });
-  // };
-
   render() {
-    console.log('question');
     const { result, answered, timer } = this.props;
-    // const { timer } = this.state;
     const { category, question } = result;
     const { answers } = this.state;
 
@@ -91,11 +81,6 @@ class Question extends Component {
             </button>
           )) }
         </div>
-        {/* <Timer
-          answered={ answered }
-          showNextBtn={ showNextBtn }
-          getTimer={ this.getTimer }
-        /> */}
       </div>
     );
   }

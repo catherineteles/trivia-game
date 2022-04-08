@@ -21,19 +21,12 @@ class Play extends React.Component {
     const { token, getQuestions } = this.props;
 
     getQuestions(token);
-    // this.clockProgress();
   }
-
-  // shouldRenderNewClock = () => {
-  //   this.setState({ newClock: false });
-  // }
 
   handleClick = () => {
     this.showNextBtn();
     const { results } = this.props;
     const { index } = this.state;
-
-    // this.clockProgress();
 
     if (results.length === (index + 1)) {
       this.setState({ showNext: false });
@@ -42,22 +35,9 @@ class Play extends React.Component {
     }
 
     this.setState((state) => (
-      // { index: state.index + 1, answered: false, clock: 30 }
       { index: state.index + 1, answered: false }
     ));
   }
-
-  // clockProgress = () => {
-  //   const interval = 1000;
-
-  //   const increase = setInterval(() => this.setState((state) => {
-  //     if (!state.clock || state.answered) {
-  //       clearInterval(increase);
-  //       return { answered: true, showNext: true };
-  //     }
-  //     return { clock: state.clock - 1 };
-  //   }), interval);
-  // }
 
   showNextBtn = () => {
     const { showNext } = this.state;
@@ -85,8 +65,6 @@ class Play extends React.Component {
           result={ results[index] }
           timer={ timer }
           index={ index }
-          // key={ index }
-          // newClock={ this.shouldRenderNewClock }
         />}
         { (showNext || timer === 0) && (
           <button
@@ -96,7 +74,6 @@ class Play extends React.Component {
           >
             Next
           </button>)}
-        {/* <p>{ clock }</p> */}
 
         <Timer
           answered={ answered }

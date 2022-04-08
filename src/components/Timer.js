@@ -13,13 +13,6 @@ class Timer extends React.Component {
     this.clockProgress();
   }
 
-  // componentDidUpdate() {
-  //   const { newClock } = this.props;
-  //   if (newClock) {
-  //     this.setState(INITIAL_STATE);
-  //   }
-  // }
-
   clockProgress = () => {
     this.setState({ timer: 30 });
     const interval = 1000;
