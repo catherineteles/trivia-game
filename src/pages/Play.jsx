@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Question from '../components/Question';
 import { addPlayer } from '../services/getRank';
 import Timer from '../components/Timer';
+import './Play.css';
 
 class Play extends React.Component {
   constructor() {
@@ -66,32 +67,32 @@ class Play extends React.Component {
     const { index, answered, showNext, timer, controlAnswers } = this.state;
 
     return (
-      <div>
+      <>
         <Header />
-        { results.length > 0 && <Question
-          showNextBtn={ this.showNextBtn }
-          answered={ answered }
-          result={ results[index] }
-          timer={ timer !== undefined && timer }
-          index={ index }
-          controlAnswers={ controlAnswers }
-        />}
-        { (showNext || timer === 0) && (
-          <button
-            data-testid="btn-next"
-            type="button"
-            onClick={ this.handleClick }
-          >
-            Next
-          </button>)}
-
-        <Timer
-          answered={ answered }
-          getTimer={ this.getTimer }
-          key={ index }
-        />
-
-      </div>
+        <div className="play-container">
+          <Timer
+            answered={ answered }
+            getTimer={ this.getTimer }
+            key={ index }
+          />
+          { results.length > 0 && <Question
+            showNextBtn={ this.showNextBtn }
+            answered={ answered }
+            result={ results[index] }
+            timer={ timer !== undefined && timer }
+            index={ index }
+            controlAnswers={ controlAnswers }
+          />}
+          { (showNext || timer === 0) && (
+            <button
+              data-testid="btn-next"
+              type="button"
+              onClick={ this.handleClick }
+            >
+              Next
+            </button>)}
+        </div>
+      </>
     );
   }
 }

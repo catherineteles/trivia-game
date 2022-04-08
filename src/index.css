@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.btn-rank-page {
+  padding: 0 30px 30px;
+}
+
 .correct {
   border: 3px solid rgb(6, 240, 15);
   background-color: rgba(6, 240, 14, 0.1);

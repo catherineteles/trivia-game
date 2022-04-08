@@ -62,7 +62,7 @@ class Question extends Component {
     const { answers } = this.state;
 
     return (
-      <div>
+      <>
         <p data-testid="question-category">{ category }</p>
         <p data-testid="question-text">{ question }</p>
         <div data-testid="answer-options" className="answer-options">
@@ -81,7 +81,7 @@ class Question extends Component {
             </button>
           )) }
         </div>
-      </div>
+      </>
     );
   }
 }

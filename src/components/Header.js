@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import getSavedRanking from '../services/getRank';
+import './Header.css';
 
 class Header extends React.Component {
   render() {
