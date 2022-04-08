@@ -6,12 +6,28 @@ import newAction from '../redux/actions/index';
 
 // quando eu clico na resposta, ele randomiza elas dnv
 class Question extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     timer: 30,
-  //   };
-  // }
+  constructor() {
+    super();
+    this.state = {
+      answers: [],
+    };
+  }
+
+  componentDidMount() {
+    const { result } = this.props;
+    const options = this.formatAnswers(result);
+    this.setState({ answers: options });
+  }
+
+  componentDidUpdate(prevProps) {
+    // Uso típico, (não esqueça de comparar as props):
+    const { index } = this.props;
+    if (index !== prevProps.index) {
+      const { result } = this.props;
+      const options = this.formatAnswers(result);
+      this.setState({ answers: options });
+    }
+  }
 
   formatAnswers = ({ correct_answer: correct, incorrect_answers: incorrect }) => {
     const magicNumber = 0.5;
@@ -53,14 +69,14 @@ class Question extends Component {
     const { result, answered } = this.props;
     // const { timer } = this.state;
     const { category, question } = result;
-    const options = this.formatAnswers(result);
+    const { answers } = this.state;
 
     return (
       <div>
         <p data-testid="question-category">{ category }</p>
         <p data-testid="question-text">{ question }</p>
         <div data-testid="answer-options" className="answer-options">
-          { options && options.map((e) => (
+          { answers && answers.map((e) => (
             <button
               type="button"
               data-testid={ e.type }

@@ -1,17 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const INITIAL_STATE = { timer: 30 };
+
 class Timer extends React.Component {
   constructor() {
     super();
-    this.state = {
-      timer: 30,
-    };
+    this.state = INITIAL_STATE;
   }
 
   componentDidMount() {
     this.clockProgress();
   }
+
+  // componentDidUpdate() {
+  //   const { newClock } = this.props;
+  //   if (newClock) {
+  //     this.setState(INITIAL_STATE);
+  //   }
+  // }
 
   clockProgress = () => {
     this.setState({ timer: 30 });
