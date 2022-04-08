@@ -11,7 +11,7 @@ class Play extends React.Component {
     super();
     this.state = {
       index: 0,
-      timer: 1,
+      timer: undefined,
       showNext: false,
       answered: false,
     };
@@ -35,7 +35,9 @@ class Play extends React.Component {
     }
 
     this.setState((state) => (
-      { index: state.index + 1, answered: false }
+      { index: state.index + 1,
+        answered: false,
+        controlAnswers: false }
     ));
   }
 
@@ -45,7 +47,12 @@ class Play extends React.Component {
   }
 
   getTimer = (time) => {
-    this.setState({ timer: time });
+    this.setState({ timer: time }, () => {
+      const { timer, showNext } = this.state;
+      if (timer === 0) {
+        this.setState({ controlAnswers: true, showNext: !showNext });
+      }
+    });
   }
 
   resetTimer = () => {
@@ -54,7 +61,7 @@ class Play extends React.Component {
 
   render() {
     const { results } = this.props;
-    const { index, answered, showNext, timer } = this.state;
+    const { index, answered, showNext, timer, controlAnswers } = this.state;
 
     return (
       <div>
@@ -63,8 +70,9 @@ class Play extends React.Component {
           showNextBtn={ this.showNextBtn }
           answered={ answered }
           result={ results[index] }
-          timer={ timer }
+          timer={ timer !== undefined && timer }
           index={ index }
+          controlAnswers={ controlAnswers }
         />}
         { (showNext || timer === 0) && (
           <button
