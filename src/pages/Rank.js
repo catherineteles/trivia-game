@@ -19,9 +19,20 @@ class Rank extends React.Component {
               />
             </li>
           ))}
+          <button
+          type="button"
+          data-testid="btn-go-home"
+          onClick={ () => history.push('/') }
+        >
+          Home
+        </button>
       </div>
     );
   }
 }
+
+Rank.propTypes = {
+  history: PropTypes.objectOf(),
+}.isRequired;
 
 export default Rank;
