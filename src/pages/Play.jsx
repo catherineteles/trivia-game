@@ -5,31 +5,29 @@ import thunkQuestion from '../redux/actions/thunkQuestion';
 import Header from '../components/Header';
 import Question from '../components/Question';
 import { addPlayer } from '../services/getRank';
+import Timer from '../components/Timer';
 
 class Play extends React.Component {
   constructor() {
     super();
     this.state = {
       index: 0,
-      clock: 30,
-      timerFreaze: 0,
+      timer: undefined,
       showNext: false,
       answered: false,
+      controlAnswers: false, 
     };
   }
 
   componentDidMount() {
     const { token, getQuestions } = this.props;
     getQuestions(token);
-    this.clockProgress();
   }
 
   handleClick = () => {
     this.showNextBtn();
     const { results } = this.props;
     const { index } = this.state;
-
-    this.clockProgress();
 
     if (results.length === (index + 1)) {
       addPlayer(this.getPlayerRank());
@@ -38,7 +36,9 @@ class Play extends React.Component {
     }
 
     this.setState((state) => (
-      { index: state.index + 1, answered: false, clock: 30 }
+      { index: state.index + 1,
+        answered: false,
+        controlAnswers: false }
     ));
   }
 
@@ -53,20 +53,27 @@ class Play extends React.Component {
     const increase = setInterval(() => this.setState((state) => {
       if (!state.clock || state.answered) {
         clearInterval(increase);
-        return { answered: true, showNext: true, timerFreaze: state.clock };
-      }
-      return { clock: state.clock - 1 };
-    }), interval);
+        return { answered: true, showNext: true};
   }
 
   showNextBtn = () => {
     const { showNext } = this.state;
     this.setState({ showNext: !showNext, answered: true });
-  };
+  }
 
+  getTimer = (time) => {
+    this.setState({ timer: time }, () => {
+      const { timer, showNext } = this.state;
+      if (timer === 0) {
+        this.setState({ controlAnswers: true, showNext: !showNext });
+      }
+    });
+  }
+  
   render() {
     const { results } = this.props;
-    const { index, answered, showNext, clock, timerFreaze } = this.state;
+    const { index, answered, showNext, timer, controlAnswers } = this.state;
+
     return (
       <div>
         <Header />
@@ -74,9 +81,11 @@ class Play extends React.Component {
           showNextBtn={ this.showNextBtn }
           answered={ answered }
           result={ results[index] }
-          timer={ timerFreaze }
+          timer={ timer !== undefined && timer }
+          index={ index }
+          controlAnswers={ controlAnswers }
         />}
-        { showNext && (
+        { (showNext || timer === 0) && (
           <button
             data-testid="btn-next"
             type="button"
@@ -84,7 +93,13 @@ class Play extends React.Component {
           >
             Next
           </button>)}
-        <p>{ clock }</p>
+
+        <Timer
+          answered={ answered }
+          getTimer={ this.getTimer }
+          key={ index }
+        />
+
       </div>
     );
   }
