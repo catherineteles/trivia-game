@@ -47,7 +47,7 @@ class Login extends Component {
     const { name, email, disabledBtn } = this.state;
 
     return (
-      <div>
+      <form>
         <label htmlFor="name">
           <input
             type="text"
@@ -82,7 +82,7 @@ class Login extends Component {
             data-testid="btn-settings"
           />
         </Link>
-      </div>
+      </form>
     );
   }
 }

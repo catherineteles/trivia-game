@@ -5,23 +5,21 @@ class RankCard extends React.Component {
   render() {
     const { img, name, score, index } = this.props;
     return (
-      <div className="ranking-item">
-        <figure className="ranking-image">
+      <>
+        <th>{ index + 1 }</th>
+        <td>
           <img src={ img } alt="" className="ranking-thumbnail" />
-          <span className="ranking-badge">{ index + 1 }</span>
-        </figure>
-        <div className="ranking-card">
-          <div
-            data-testid={ `player-name-${index}` }
-            className="ranking-name"
-          >
-            { name }
-          </div>
-          <p data-testid={ `player-score-${index}` } className="ranking-score">
-            { score }
-          </p>
-        </div>
-      </div>
+        </td>
+        <td
+          data-testid={ `player-name-${index}` }
+          className="ranking-name"
+        >
+          { name }
+        </td>
+        <td data-testid={ `player-score-${index}` } className="ranking-score">
+          { score }
+        </td>
+      </>
     );
   }
 }

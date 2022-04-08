@@ -19,28 +19,39 @@ class Rank extends React.Component {
   render() {
     const { history } = this.props;
     const { rank } = this.state;
+    const orderedRank = rank.sort((a, b) => b.score - a.score);
     return (
-      <div className="container">
-        <h1 data-testid="ranking-title" className="ranking-title">Rank</h1>
-        { rank.length !== 0 && rank.sort((a, b) => b.score - a.score)
-          .map((player, index) => (
-            <li key={ player.name }>
-              <RankCard
-                name={ player.name }
-                score={ player.score }
-                img={ player.picture }
-                index={ index }
-              />
-            </li>
-          ))}
-        <button
-          type="button"
-          data-testid="btn-go-home"
-          onClick={ () => history.push('/') }
-        >
-          Home
-        </button>
-      </div>
+      <>
+        <table className="container">
+          <thead>
+            <tr>
+              <td data-testid="ranking-title">Rank</td>
+            </tr>
+          </thead>
+          <tbody>
+            { rank.length !== 0 && rank
+              .map((player, index) => (
+                <tr key={ index }>
+                  <RankCard
+                    name={ orderedRank[index].name }
+                    score={ orderedRank[index].score }
+                    img={ orderedRank[index].picture }
+                    index={ index }
+                  />
+                </tr>
+              ))}
+          </tbody>
+        </table>
+        <div className="btn-rank-page">
+          <button
+            type="button"
+            data-testid="btn-go-home"
+            onClick={ () => history.push('/') }
+          >
+            Home
+          </button>
+        </div>
+      </>
     );
   }
 }
