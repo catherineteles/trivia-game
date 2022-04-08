@@ -15,7 +15,7 @@ class Play extends React.Component {
       timer: undefined,
       showNext: false,
       answered: false,
-      controlAnswers: false, 
+      controlAnswers: false,
     };
   }
 
@@ -47,15 +47,6 @@ class Play extends React.Component {
     return { name: savedName, score: savedScore, picture: savedImg };
   }
 
-  clockProgress = () => {
-    const interval = 1000;
-
-    const increase = setInterval(() => this.setState((state) => {
-      if (!state.clock || state.answered) {
-        clearInterval(increase);
-        return { answered: true, showNext: true};
-  }
-
   showNextBtn = () => {
     const { showNext } = this.state;
     this.setState({ showNext: !showNext, answered: true });
@@ -69,7 +60,7 @@ class Play extends React.Component {
       }
     });
   }
-  
+
   render() {
     const { results } = this.props;
     const { index, answered, showNext, timer, controlAnswers } = this.state;
