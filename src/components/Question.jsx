@@ -20,14 +20,13 @@ class Question extends Component {
     target.className = 'selected';
     const isCorrect = target.name.split('-')[0] === 'correct';
 
-    const { result, dispatchAction, showNextBtn } = this.props;
+    const { result, dispatchAction, showNextBtn, timer } = this.props;
     const { difficulty } = result;
     const magicNum = 3;
     const isItHard = difficulty === 'hard' ? magicNum : 1;
     const multiplyBy = difficulty === 'medium' ? 2 : isItHard;
 
     const dez = 10;
-    const timer = 1;
     const score = isCorrect ? (dez + (timer * multiplyBy)) : 0;
     const assertion = isCorrect ? 1 : 0;
     showNextBtn();
