@@ -57,7 +57,7 @@ class Question extends Component {
   }
 
   render() {
-    const { result, answered, timer } = this.props;
+    const { result, answered, timer, controlAnswers } = this.props;
     const { category, question } = result;
     const { answers } = this.state;
 
@@ -74,7 +74,7 @@ class Question extends Component {
               name={ e.type }
               value={ e.label }
               className={ answered ? e.type.split('-')[0] : '' }
-              disabled={ timer === 0 ? true : answered }
+              disabled={ timer === 0 ? controlAnswers : answered }
               onClick={ this.handleClick }
             >
               { e.label }
