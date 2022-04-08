@@ -53,7 +53,7 @@ class Play extends React.Component {
     const increase = setInterval(() => this.setState((state) => {
       if (!state.clock || state.answered) {
         clearInterval(increase);
-        return { answered: true, showNext: true, freezeTime: state.clock };
+        return { answered: true, showNext: true, timerFreaze: state.clock };
       }
       return { clock: state.clock - 1 };
     }), interval);
