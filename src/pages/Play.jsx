@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import thunkQuestion from '../redux/actions/thunkQuestion';
 import Header from '../components/Header';
 import Question from '../components/Question';
+import { addPlayer } from '../services/getRank';
 import Timer from '../components/Timer';
 
 class Play extends React.Component {
@@ -14,12 +15,12 @@ class Play extends React.Component {
       timer: undefined,
       showNext: false,
       answered: false,
+      controlAnswers: false,
     };
   }
 
   componentDidMount() {
     const { token, getQuestions } = this.props;
-
     getQuestions(token);
   }
 
@@ -29,7 +30,7 @@ class Play extends React.Component {
     const { index } = this.state;
 
     if (results.length === (index + 1)) {
-      this.setState({ showNext: false });
+      addPlayer(this.getPlayerRank());
       const { history } = this.props;
       return history.push('/feedback');
     }
@@ -39,6 +40,11 @@ class Play extends React.Component {
         answered: false,
         controlAnswers: false }
     ));
+  }
+
+  getPlayerRank = () => {
+    const { savedName, savedImg, savedScore } = this.props;
+    return { name: savedName, score: savedScore, picture: savedImg };
   }
 
   showNextBtn = () => {
@@ -53,10 +59,6 @@ class Play extends React.Component {
         this.setState({ controlAnswers: true, showNext: !showNext });
       }
     });
-  }
-
-  resetTimer = () => {
-    console.log('oi');
   }
 
   render() {
@@ -98,6 +100,9 @@ function mapStateToProps(state) {
   return {
     token: state.token,
     results: state.questions,
+    savedScore: state.player.score,
+    savedImg: state.player.userImg,
+    savedName: state.player.name,
   };
 }
 
