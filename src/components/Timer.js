@@ -29,6 +29,9 @@ class Timer extends React.Component {
         clearInterval(increase);
         return getTimer(state.timer);
       }
+      if (state.timer === 0) {
+        return getTimer(state.timer);
+      }
       return { timer: state.timer - 1 };
     }), interval);
   }

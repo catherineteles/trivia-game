@@ -20,7 +20,7 @@ class Question extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    // Uso típico, (não esqueça de comparar as props):
+    // simulação da key
     const { index } = this.props;
     if (index !== prevProps.index) {
       const { result } = this.props;
@@ -66,7 +66,7 @@ class Question extends Component {
 
   render() {
     console.log('question');
-    const { result, answered } = this.props;
+    const { result, answered, timer } = this.props;
     // const { timer } = this.state;
     const { category, question } = result;
     const { answers } = this.state;
@@ -84,7 +84,7 @@ class Question extends Component {
               name={ e.type }
               value={ e.label }
               className={ answered ? e.type.split('-')[0] : '' }
-              disabled={ answered }
+              disabled={ timer === 0 ? true : answered }
               onClick={ this.handleClick }
             >
               { e.label }

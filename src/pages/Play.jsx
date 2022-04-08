@@ -11,7 +11,7 @@ class Play extends React.Component {
     super();
     this.state = {
       index: 0,
-      timer: 0,
+      timer: 1,
       showNext: false,
       answered: false,
     };
@@ -62,11 +62,11 @@ class Play extends React.Component {
   showNextBtn = () => {
     const { showNext } = this.state;
     this.setState({ showNext: !showNext, answered: true });
-  };
+  }
 
   getTimer = (time) => {
     this.setState({ timer: time });
-  };
+  }
 
   resetTimer = () => {
     console.log('oi');
@@ -88,7 +88,7 @@ class Play extends React.Component {
           // key={ index }
           // newClock={ this.shouldRenderNewClock }
         />}
-        { showNext && (
+        { (showNext || timer === 0) && (
           <button
             data-testid="btn-next"
             type="button"
