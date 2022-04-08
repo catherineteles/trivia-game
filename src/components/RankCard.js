@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './RankCard.css';
 
 class RankCard extends React.Component {
   render() {
