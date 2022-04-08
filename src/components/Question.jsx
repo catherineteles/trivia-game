@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import newAction from '../redux/actions/index';
 
+const he = require('he');
+
 class Question extends Component {
   constructor() {
     super();
@@ -60,11 +62,13 @@ class Question extends Component {
     const { result, answered, timer, controlAnswers } = this.props;
     const { category, question } = result;
     const { answers } = this.state;
+    // Por surgestão da Luá utilizamos o he.decode()
+    // https://github.com/mathiasbynens/he
 
     return (
       <>
         <p data-testid="question-category">{ category }</p>
-        <p data-testid="question-text">{ question }</p>
+        <p data-testid="question-text">{ he.decode(question) }</p>
         <div data-testid="answer-options" className="answer-options">
           { answers && answers.map((e) => (
             <button
@@ -77,7 +81,7 @@ class Question extends Component {
               disabled={ timer === 0 ? controlAnswers : answered }
               onClick={ this.handleClick }
             >
-              { e.label }
+              { he.decode(e.label) }
             </button>
           )) }
         </div>
