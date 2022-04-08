@@ -6,19 +6,21 @@ class Rank extends React.Component {
   render() {
     const rank = getSavedRanking();
     return (
-      <div>
-        <h1 data-testid="ranking-title">Rank</h1>
-        { rank.length !== 0 && rank.sort((a, b) => b.score - a.score)
-          .map((player, index) => (
-            <li key={ index }>
-              <RankCard
-                name={ player.name }
-                score={ player.score }
-                img={ player.picture }
-                index={ index }
-              />
-            </li>
-          ))}
+      <div className="container">
+        <h1 data-testid="ranking-title" className="ranking-title">Rank</h1>
+        <ul className="ranking-list">
+          { rank.length !== 0 && rank.sort((a, b) => b.score - a.score)
+            .map((player, index) => (
+              <li key={ index }>
+                <RankCard
+                  name={ player.name }
+                  score={ player.score }
+                  img={ player.picture }
+                  index={ index }
+                />
+              </li>
+            ))}
+        </ul>
       </div>
     );
   }

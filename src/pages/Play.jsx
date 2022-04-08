@@ -32,10 +32,9 @@ class Play extends React.Component {
     this.clockProgress();
 
     if (results.length === (index + 1)) {
-      this.setState({ showNext: false });
       addPlayer(this.getPlayerRank());
       const { history } = this.props;
-      history.push('/feedback');
+      return history.push('/feedback');
     }
     this.setState((state) => (
       { index: state.index + 1, answered: false, clock: 30 }

@@ -1,0 +1,70 @@
+.container {
+  color: #333;
+  padding: 2rem;
+}
+
+.ranking-title {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+
+.ranking-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ranking-item {
+  border-bottom: 1px solid #ededed;
+  display: flex;
+  justify-content: center;
+  max-width: 400px;
+  padding: 10px;
+}
+
+.ranking-item:first-child {
+  border-top: 1px solid #ededed;
+}
+
+.ranking-card {
+  color: inherit;
+  display: flex;
+  padding: 1rem 0;
+  text-decoration: none;
+}
+
+.ranking-image {
+  margin: 0 1rem 0 0;
+  position: relative;
+}
+
+.ranking-thumbnail {
+  width: 6rem;
+}
+
+.ranking-badge {
+  align-items: center;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 9999px;
+  color: #888;
+  display: flex;
+  font-size: 0.75rem;
+  height: 1.5rem;
+  justify-content: center;
+  left: -0.5rem;
+  position: absolute;
+  top: -0.5rem;
+  width: 1.5rem;
+}
+
+.ranking-name {
+  color: #888;
+  font-size: 0.75rem;
+}
+
+.ranking-score {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0.5rem 0 0;
+}

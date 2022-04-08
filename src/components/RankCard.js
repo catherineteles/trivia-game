@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './RankCard.css';
 
 class RankCard extends React.Component {
   render() {
     const { img, name, score, index } = this.props;
     return (
-      <div>
+      <div className="ranking-item">
         <figure className="ranking-image">
           <img src={ img } alt="" className="ranking-thumbnail" />
-          <span className="ranking-badge">{ index }</span>
+          <span className="ranking-badge">{ index + 1 }</span>
         </figure>
-        <div className="ranking-card-info">
+        <div className="ranking-card">
           <div
             data-testid={ `player-name-${index}` }
             className="ranking-name"
