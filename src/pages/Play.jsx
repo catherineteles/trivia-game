@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import thunkQuestion from '../redux/actions/thunkQuestion';
 import Header from '../components/Header';
 import Question from '../components/Question';
+import { addPlayer } from '../services/getRank';
 
 class Play extends React.Component {
   constructor() {
@@ -32,12 +33,18 @@ class Play extends React.Component {
 
     if (results.length === (index + 1)) {
       this.setState({ showNext: false });
+      addPlayer(this.getPlayerRank());
       const { history } = this.props;
       history.push('/feedback');
     }
     this.setState((state) => (
       { index: state.index + 1, answered: false, clock: 30 }
     ));
+  }
+
+  getPlayerRank = () => {
+    const { savedName, savedImg, savedScore } = this.props;
+    return { name: savedName, score: savedScore, picture: savedImg };
   }
 
   clockProgress = () => {
@@ -87,6 +94,9 @@ function mapStateToProps(state) {
   return {
     token: state.token,
     results: state.questions,
+    savedScore: state.player.score,
+    savedImg: state.player.userImg,
+    savedName: state.player.name,
   };
 }
 
