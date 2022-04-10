@@ -3,12 +3,14 @@
   background-color: #f2f2f2;
   display: flex;
   justify-content: space-around;
+  padding: 10px;
 }
 
-/* Style the links inside the navigation bar */
 .topnav p {
+  align-items: center;
   color: #333;
   font-size: 19px;
+  margin: 10px;
   text-align: center;
   text-decoration: none;
 }
@@ -16,11 +18,14 @@
 .title-nav {
   align-items: center;
   color: #333;
-  text-align: center;
-  text-decoration: none;
 }
 
 .text-container {
   align-items: center;
   display: flex;
+  justify-content: space-between;
+}
+
+.topnav img {
+  border-radius: 50%;
 }

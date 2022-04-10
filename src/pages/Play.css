@@ -1,5 +1,30 @@
 .play-container {
   display: flex;
   flex-direction: column;
-  margin: 30px;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.play-container button {
+  border-radius: 10px;
+  font-size: 19px;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 60%;
+}
+
+.category-img {
+  border-radius: 30px;
+  margin: auto;
+  margin-bottom: 15px;
+  max-width: 250px;
+}
+
+@media ( prefers-color-scheme : light ) {
+
+  .play-container button {
+    background-color: white;
+    color: #333;
+  }
 }

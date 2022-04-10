@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import md5 from 'crypto-js/md5';
 import thunkToken from '../redux/actions/thunkToken';
 import newAction from '../redux/actions/index';
+import avatar from '../images/question_mark.jpg';
+import './Login.css';
 
 class Login extends Component {
   constructor() {
@@ -47,7 +49,11 @@ class Login extends Component {
     const { name, email, disabledBtn } = this.state;
 
     return (
-      <form>
+      <form className="login-form">
+        <h2>Login</h2>
+        <div className="imgcontainer">
+          <img src={ avatar } alt="Avatar" className="avatar" />
+        </div>
         <label htmlFor="name">
           <input
             type="text"
@@ -55,6 +61,7 @@ class Login extends Component {
             value={ name }
             onChange={ this.handleChange }
             placeholder="Type your name"
+            className="login-input"
             data-testid="input-player-name"
           />
         </label>
@@ -65,6 +72,7 @@ class Login extends Component {
             value={ email }
             onChange={ this.handleChange }
             placeholder="Type your e-mail"
+            className="login-input"
             data-testid="input-gravatar-email"
           />
         </label>
@@ -72,6 +80,7 @@ class Login extends Component {
           type="button"
           value="Play"
           data-testid="btn-play"
+          className="login-btn"
           disabled={ disabledBtn }
           onClick={ this.handleClick }
         />
@@ -79,6 +88,7 @@ class Login extends Component {
           <input
             type="button"
             value="Edit"
+            className="login-btn"
             data-testid="btn-settings"
           />
         </Link>

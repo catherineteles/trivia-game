@@ -69,29 +69,31 @@ class Play extends React.Component {
     return (
       <>
         <Header />
-        <div className="play-container">
-          <Timer
-            answered={ answered }
-            getTimer={ this.getTimer }
-            key={ index }
-          />
-          { results.length > 0 && <Question
-            showNextBtn={ this.showNextBtn }
-            answered={ answered }
-            result={ results[index] }
-            timer={ timer !== undefined && timer }
-            index={ index }
-            controlAnswers={ controlAnswers }
-          />}
-          { (showNext || timer === 0) && (
-            <button
-              data-testid="btn-next"
-              type="button"
-              onClick={ this.handleClick }
-            >
-              Next
-            </button>)}
-        </div>
+        <main>
+          <div className="play-container">
+            <Timer
+              answered={ answered }
+              getTimer={ this.getTimer }
+              key={ index }
+            />
+            { results.length > 0 && <Question
+              showNextBtn={ this.showNextBtn }
+              answered={ answered }
+              result={ results[index] }
+              timer={ timer !== undefined && timer }
+              index={ index }
+              controlAnswers={ controlAnswers }
+            />}
+            { (showNext || timer === 0) && (
+              <button
+                data-testid="btn-next"
+                type="button"
+                onClick={ this.handleClick }
+              >
+                Next
+              </button>)}
+          </div>
+        </main>
       </>
     );
   }

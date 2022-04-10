@@ -28,6 +28,7 @@ code {
 
 .selected {
   /* customizar resposta selecionada */
+  font-weight: 700;
   text-decoration: underline;
 }
 
