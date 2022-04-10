@@ -14,6 +14,13 @@
   width: 60%;
 }
 
+.category-img {
+  border-radius: 30px;
+  margin: auto;
+  margin-bottom: 15px;
+  max-width: 250px;
+}
+
 @media ( prefers-color-scheme : light ) {
 
   .play-container button {

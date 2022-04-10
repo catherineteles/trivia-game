@@ -70,8 +70,8 @@ class Question extends Component {
     return (
       <>
         <p data-testid="question-category">{ category }</p>
-        <img src={ categoryImg.src } alt={ category } />
-        <p data-testid="question-text">{ he.decode(question) }</p>
+        <img src={ categoryImg.src } alt={ category } className="category-img" />
+        <h3 data-testid="question-text">{ he.decode(question) }</h3>
         <div data-testid="answer-options" className="answer-options">
           { answers && answers.map((e) => (
             <button

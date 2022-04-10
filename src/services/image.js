@@ -11,12 +11,15 @@ const srcGeneral = require('../images/General Knowledge.svg');
 const srcHis = require('../images/History.svg');
 const srcPolitics = require('../images/Politics.svg');
 const srcComputer = require('../images/Science: Computers.svg');
+const srcMath = require('../images/Science: Mathematics.svg');
 const srcScience = require('../images/Science & Nature.svg');
 const srcSports = require('../images/Sports.svg');
+const srcVehicles = require('../images/Vehicles.svg');
 
 const images = [
   { category: 'Animals', src: srcAnimals },
   { category: 'Entertainment: Books', src: srcBooks },
+  { category: 'Entertainment: Comics', src: srcBooks },
   { category: 'Entertainment: Film', src: srcFilm },
   { category: 'Entertainment: Television', src: srcFilm },
   { category: 'Geography', src: srcGeo },
@@ -31,7 +34,8 @@ const images = [
   { category: 'General Knowledge', src: srcGeneral },
   { category: 'Science: Computers', src: srcComputer },
   { category: 'Science & Nature', src: srcScience },
-  { category: 'Science: Mathematics', src: srcScience },
+  { category: 'Science: Mathematics', src: srcMath },
   { category: 'Sports', src: srcSports },
+  { category: 'Vehicles', src: srcVehicles },
 ];
 export default images;
