@@ -10,7 +10,7 @@ class Header extends React.Component {
     return (
       <header className="topnav" data-testid="header-component">
         <img src={ savedImg } alt="" data-testid="header-profile-picture" />
-        <h1 className="title-nav">Trivia!</h1>
+        <p className="title-nav">Trivia!</p>
         <div className="text-container">
           <p data-testid="header-player-name">{savedName}</p>
           <p data-testid="header-score">

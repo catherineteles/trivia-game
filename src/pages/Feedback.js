@@ -10,25 +10,27 @@ class Feedback extends React.Component {
     return (
       <div>
         <Header />
-        <h2 data-testid="feedback-total-score">{savedScore}</h2>
-        <h2 data-testid="feedback-total-question">{savedAssertion}</h2>
-        {savedAssertion < minPoints ? (
-          <h3 data-testid="feedback-text">Could be better...</h3>)
-          : <h3 data-testid="feedback-text">Well Done!</h3>}
-        <button
-          type="button"
-          data-testid="btn-play-again"
-          onClick={ () => history.push('/') }
-        >
-          Play Again
-        </button>
-        <button
-          type="button"
-          data-testid="btn-ranking"
-          onClick={ () => history.push('/rank') }
-        >
-          Ranking
-        </button>
+        <body>
+          <h2 data-testid="feedback-total-score">{savedScore}</h2>
+          <h2 data-testid="feedback-total-question">{savedAssertion}</h2>
+          {savedAssertion < minPoints ? (
+            <h3 data-testid="feedback-text">Could be better...</h3>)
+            : <h3 data-testid="feedback-text">Well Done!</h3>}
+          <button
+            type="button"
+            data-testid="btn-play-again"
+            onClick={ () => history.push('/') }
+          >
+            Play Again
+          </button>
+          <button
+            type="button"
+            data-testid="btn-ranking"
+            onClick={ () => history.push('/rank') }
+          >
+            Ranking
+          </button>
+        </body>
       </div>
     );
   }
