@@ -69,7 +69,7 @@ class Play extends React.Component {
     return (
       <>
         <Header />
-        <body>
+        <main>
           <div className="play-container">
             <Timer
               answered={ answered }
@@ -93,7 +93,7 @@ class Play extends React.Component {
                 Next
               </button>)}
           </div>
-        </body>
+        </main>
       </>
     );
   }

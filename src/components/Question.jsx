@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import newAction from '../redux/actions/index';
+import images from '../services/image';
 
 const he = require('he');
 
@@ -62,12 +63,14 @@ class Question extends Component {
     const { result, answered, timer, controlAnswers } = this.props;
     const { category, question } = result;
     const { answers } = this.state;
+    const categoryImg = images.find((e) => e.category === category);
     // Por surgestão da Luá utilizamos o he.decode()
     // https://github.com/mathiasbynens/he
 
     return (
       <>
         <p data-testid="question-category">{ category }</p>
+        <img src={ categoryImg.src } alt={ category } />
         <p data-testid="question-text">{ he.decode(question) }</p>
         <div data-testid="answer-options" className="answer-options">
           { answers && answers.map((e) => (

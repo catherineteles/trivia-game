@@ -10,7 +10,7 @@ class Feedback extends React.Component {
     return (
       <div>
         <Header />
-        <body>
+        <main>
           <h2 data-testid="feedback-total-score">{savedScore}</h2>
           <h2 data-testid="feedback-total-question">{savedAssertion}</h2>
           {savedAssertion < minPoints ? (
@@ -30,7 +30,7 @@ class Feedback extends React.Component {
           >
             Ranking
           </button>
-        </body>
+        </main>
       </div>
     );
   }
