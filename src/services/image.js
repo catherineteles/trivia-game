@@ -1,4 +1,5 @@
 const srcAnimals = require('../images/Animals.svg');
+const srcArt = require('../images/Art.svg');
 const srcBooks = require('../images/Entertainment: Books.svg');
 const srcFilm = require('../images/Entertainment: Film.svg');
 const srcGeo = require('../images/Geography.svg');
@@ -18,10 +19,13 @@ const srcVehicles = require('../images/Vehicles.svg');
 
 const images = [
   { category: 'Animals', src: srcAnimals },
+  { category: 'Art', src: srcArt },
+  { category: 'Celebrities', src: srcArt },
   { category: 'Entertainment: Books', src: srcBooks },
   { category: 'Entertainment: Comics', src: srcBooks },
   { category: 'Entertainment: Film', src: srcFilm },
   { category: 'Entertainment: Television', src: srcFilm },
+  { category: 'Entertainment: Cartoons & Animations', src: srcFilm },
   { category: 'Geography', src: srcGeo },
   { category: 'History', src: srcHis },
   { category: 'Politics', src: srcPolitics },
@@ -33,6 +37,7 @@ const images = [
   { category: 'Entertainment: Japanese Anime & Manga', src: srcAnime },
   { category: 'General Knowledge', src: srcGeneral },
   { category: 'Science: Computers', src: srcComputer },
+  { category: 'Science: Gadgets', src: srcComputer },
   { category: 'Science & Nature', src: srcScience },
   { category: 'Science: Mathematics', src: srcMath },
   { category: 'Sports', src: srcSports },
