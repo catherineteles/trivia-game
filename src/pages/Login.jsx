@@ -19,6 +19,11 @@ class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount() {
+    const { dispatchAction } = this.props;
+    dispatchAction('NEW_GAME');
+  }
+
   handleClick = async () => {
     const { email, name } = this.state;
     const { getToken, history, dispatchAction } = this.props;
