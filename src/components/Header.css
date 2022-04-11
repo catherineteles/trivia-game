@@ -1,6 +1,6 @@
 .topnav {
   align-items: center;
-  border: 1px #333 solid;
+  border-bottom: 1px #333 solid;
   display: flex;
   justify-content: space-around;
   padding: 10px;

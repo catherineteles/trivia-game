@@ -1,7 +1,7 @@
 .play-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: center;
 }
 
@@ -9,16 +9,43 @@
   border-radius: 10px;
   font-size: 19px;
   margin: auto;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  width: 60%;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding: 5px;
+  width: 59%;
 }
 
 .category-img {
   border-radius: 30px;
+  margin-left: 5px;
+  max-height: 150px;
+  max-width: 150px;
+}
+
+.category-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   margin: auto;
-  margin-bottom: 15px;
-  max-width: 250px;
+  width: 60%;
+}
+
+.category-container h5 {
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.answer-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  width: 62%;
+}
+
+.answer-options button {
+  padding: 5px;
+  width: 45%;
 }
 
 @media ( prefers-color-scheme : light ) {

@@ -12,17 +12,17 @@ class Header extends React.Component {
       <header className="topnav" data-testid="header-component">
         <img src={ triviaLogo } alt="Trivia Log" className="trivia-logo" />
         <div className="text-container">
-          <img
-            src={ savedImg }
-            alt="Imagem do Usuário"
-            data-testid="header-profile-picture"
-            className="avatar"
-          />
           <p data-testid="header-player-name">{savedName}</p>
           <p data-testid="header-score">
             {savedScore}
           </p>
         </div>
+        <img
+          src={ savedImg }
+          alt="Imagem do Usuário"
+          data-testid="header-profile-picture"
+          className="avatar"
+        />
       </header>
     );
   }
