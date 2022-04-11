@@ -1,6 +1,6 @@
 .topnav {
   align-items: center;
-  background-color: #f2f2f2;
+  border: 1px #333 solid;
   display: flex;
   justify-content: space-around;
   padding: 10px;
@@ -15,9 +15,8 @@
   text-decoration: none;
 }
 
-.title-nav {
-  align-items: center;
-  color: #333;
+.trivia-logo {
+  max-width: 200px;
 }
 
 .text-container {
@@ -26,6 +25,7 @@
   justify-content: space-between;
 }
 
-.topnav img {
+.avatar {
   border-radius: 50%;
+  max-width: 50px;
 }

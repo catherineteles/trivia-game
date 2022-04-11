@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './Header.css';
+import triviaLogo from '../images/TriviaHeader.png';
 
 class Header extends React.Component {
   render() {
@@ -9,9 +10,14 @@ class Header extends React.Component {
     const { savedImg, savedName, savedScore } = this.props;
     return (
       <header className="topnav" data-testid="header-component">
-        <img src={ savedImg } alt="" data-testid="header-profile-picture" />
-        <p className="title-nav">Trivia!</p>
+        <img src={ triviaLogo } alt="Trivia Log" className="trivia-logo" />
         <div className="text-container">
+          <img
+            src={ savedImg }
+            alt="Imagem do Usuário"
+            data-testid="header-profile-picture"
+            className="avatar"
+          />
           <p data-testid="header-player-name">{savedName}</p>
           <p data-testid="header-score">
             {savedScore}

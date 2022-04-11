@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import md5 from 'crypto-js/md5';
 import thunkToken from '../redux/actions/thunkToken';
 import newAction from '../redux/actions/index';
-import avatar from '../images/question_mark.jpg';
 import './Login.css';
 
 class Login extends Component {
@@ -51,31 +50,24 @@ class Login extends Component {
     return (
       <form className="login-form">
         <h2>Login</h2>
-        <div className="imgcontainer">
-          <img src={ avatar } alt="Avatar" className="avatar" />
-        </div>
-        <label htmlFor="name">
-          <input
-            type="text"
-            name="name"
-            value={ name }
-            onChange={ this.handleChange }
-            placeholder="Type your name"
-            className="login-input"
-            data-testid="input-player-name"
-          />
-        </label>
-        <label htmlFor="email">
-          <input
-            type="email"
-            name="email"
-            value={ email }
-            onChange={ this.handleChange }
-            placeholder="Type your e-mail"
-            className="login-input"
-            data-testid="input-gravatar-email"
-          />
-        </label>
+        <input
+          type="text"
+          name="name"
+          value={ name }
+          onChange={ this.handleChange }
+          placeholder="Type your name"
+          className="login-input"
+          data-testid="input-player-name"
+        />
+        <input
+          type="email"
+          name="email"
+          value={ email }
+          onChange={ this.handleChange }
+          placeholder="Type your e-mail"
+          className="login-input"
+          data-testid="input-gravatar-email"
+        />
         <input
           type="button"
           value="Play"
