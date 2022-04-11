@@ -1,0 +1,28 @@
+.feedback-container {
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  width: 60%;
+}
+
+.feedback-container span {
+  color: #3a8ec5e1;
+  margin: 0 5px;
+}
+
+.feedback-container h3 {
+  margin-bottom: 5px;
+}
+
+.feedback-container img {
+  max-width: 300px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-container button {
+  width: 45%;
+}
