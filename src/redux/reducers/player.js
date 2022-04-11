@@ -23,6 +23,11 @@ const token = (state = INITIAL_STATE, action) => {
     return { ...state, assertions: newAssertion };
   }
 
+  if (action.type === 'CLEAR_SCORE') {
+    const newScore = action.payload;
+    return { ...state, score: newScore, assertions: newScore };
+  }
+
   return state;
 };
 

@@ -25,7 +25,7 @@ const images = [
   { category: 'Entertainment: Comics', src: srcBooks },
   { category: 'Entertainment: Film', src: srcFilm },
   { category: 'Entertainment: Television', src: srcFilm },
-  { category: 'Entertainment: Cartoons & Animations', src: srcFilm },
+  { category: 'Entertainment: Cartoon & Animations', src: srcFilm },
   { category: 'Geography', src: srcGeo },
   { category: 'History', src: srcHis },
   { category: 'Politics', src: srcPolitics },

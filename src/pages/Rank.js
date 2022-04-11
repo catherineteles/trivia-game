@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import RankCard from '../components/RankCard';
 import { getSavedRanking } from '../services/getRank';
+import newAction from '../redux/actions';
 
 class Rank extends React.Component {
   constructor() {
@@ -17,7 +19,7 @@ class Rank extends React.Component {
   }
 
   render() {
-    const { history } = this.props;
+    const { history, clearScore } = this.props;
     const { rank } = this.state;
     const orderedRank = rank.sort((a, b) => b.score - a.score);
     return (
@@ -29,13 +31,13 @@ class Rank extends React.Component {
             </tr>
           </thead>
           <tbody>
-            { rank.length !== 0 && rank
+            { rank.length !== 0 && orderedRank
               .map((player, index) => (
                 <tr key={ index }>
                   <RankCard
-                    name={ orderedRank[index].name }
-                    score={ orderedRank[index].score }
-                    img={ orderedRank[index].picture }
+                    name={ player.name }
+                    score={ player.score }
+                    img={ player.picture }
                     index={ index }
                   />
                 </tr>
@@ -46,7 +48,10 @@ class Rank extends React.Component {
           <button
             type="button"
             data-testid="btn-go-home"
-            onClick={ () => history.push('/') }
+            onClick={ () => {
+              clearScore();
+              history.push('/');
+            } }
           >
             Home
           </button>
@@ -56,8 +61,14 @@ class Rank extends React.Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    clearScore: () => dispatch(newAction('CLEAR_SCORE', 0)),
+  };
+}
+
 Rank.propTypes = {
   history: PropTypes.objectOf(),
 }.isRequired;
 
-export default Rank;
+export default connect(null, mapDispatchToProps)(Rank);
