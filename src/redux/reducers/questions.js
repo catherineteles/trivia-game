@@ -1,5 +1,9 @@
-export default (state = [], action) => (
-  (action.type === 'GET_QUESTIONS')
-    ? action.payload
-    : state
-);
+export default (state = [], action) => {
+  if (action.type === 'GET_QUESTIONS') {
+    return action.payload;
+  }
+  if (action.type === 'NEW_GAME') {
+    return [];
+  }
+  return state;
+};
