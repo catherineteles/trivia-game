@@ -6,11 +6,11 @@ const token = (state = INITIAL_STATE, action) => {
   }
 
   if (action.type === 'USER_NAME') {
-    return { ...state, name: action.payload };
+    return { ...state, name: action.payload, score: 0 };
   }
 
   if (action.type === 'USER_EMAIL') {
-    return { ...state, gravatarEmail: action.payload };
+    return { ...state, gravatarEmail: action.payload, assertions: 0 };
   }
 
   if (action.type === 'ADD_SCORE') {

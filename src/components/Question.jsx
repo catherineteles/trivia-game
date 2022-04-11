@@ -69,15 +69,15 @@ class Question extends Component {
 
     return (
       <>
-        <div className="category-container">
-          <h5 data-testid="question-category">{ category }</h5>
-          <img
-            src={ categoryImg ? categoryImg.src : images[0].src }
-            alt={ category }
-            className="category-img"
-          />
+        <div className="question-container">
+          <p data-testid="question-category">{ category }</p>
+          <h4 data-testid="question-text">{ he.decode(question) }</h4>
         </div>
-        <h5 data-testid="question-text">{ he.decode(question) }</h5>
+        <img
+          src={ categoryImg ? categoryImg.src : images[0].src }
+          alt={ category }
+          className="category-img"
+        />
         <div data-testid="answer-options" className="answer-options">
           { answers && answers.map((e) => (
             <button
