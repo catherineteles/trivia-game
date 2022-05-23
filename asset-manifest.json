@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/trivia-game/static/css/main.5fdb6058.chunk.css",
+    "main.js": "/trivia-game/static/js/main.19cc5b5b.chunk.js",
+    "main.js.map": "/trivia-game/static/js/main.19cc5b5b.chunk.js.map",
+    "runtime-main.js": "/trivia-game/static/js/runtime-main.4bc9de50.js",
+    "runtime-main.js.map": "/trivia-game/static/js/runtime-main.4bc9de50.js.map",
+    "static/js/2.849cc7e1.chunk.js": "/trivia-game/static/js/2.849cc7e1.chunk.js",
+    "static/js/2.849cc7e1.chunk.js.map": "/trivia-game/static/js/2.849cc7e1.chunk.js.map",
+    "index.html": "/trivia-game/index.html",
+    "precache-manifest.1e849b470eb0eced27e63b92885dca81.js": "/trivia-game/precache-manifest.1e849b470eb0eced27e63b92885dca81.js",
+    "service-worker.js": "/trivia-game/service-worker.js",
+    "static/css/main.5fdb6058.chunk.css.map": "/trivia-game/static/css/main.5fdb6058.chunk.css.map",
+    "static/js/2.849cc7e1.chunk.js.LICENSE.txt": "/trivia-game/static/js/2.849cc7e1.chunk.js.LICENSE.txt",
+    "static/media/Animals.svg": "/trivia-game/static/media/Animals.549fd09b.svg",
+    "static/media/Art.svg": "/trivia-game/static/media/Art.641abe85.svg",
+    "static/media/Entertainment: Board Games.svg": "/trivia-game/static/media/Entertainment: Board Games.19d2ab8f.svg",
+    "static/media/Entertainment: Books.svg": "/trivia-game/static/media/Entertainment: Books.97b9a0a4.svg",
+    "static/media/Entertainment: Film.svg": "/trivia-game/static/media/Entertainment: Film.aafbbb43.svg",
+    "static/media/Entertainment: Japanese Anime & Manga.svg": "/trivia-game/static/media/Entertainment: Japanese Anime & Manga.ac21f461.svg",
+    "static/media/Entertainment: Music.svg": "/trivia-game/static/media/Entertainment: Music.12c503ae.svg",
+    "static/media/Entertainment: Video Games.svg": "/trivia-game/static/media/Entertainment: Video Games.5726322d.svg",
+    "static/media/General Knowledge.svg": "/trivia-game/static/media/General Knowledge.06893475.svg",
+    "static/media/Geography.svg": "/trivia-game/static/media/Geography.39a67f4c.svg",
+    "static/media/History.svg": "/trivia-game/static/media/History.125fcb1d.svg",
+    "static/media/Mythology.svg": "/trivia-game/static/media/Mythology.80be2517.svg",
+    "static/media/Politics.svg": "/trivia-game/static/media/Politics.051b033d.svg",
+    "static/media/Science & Nature.svg": "/trivia-game/static/media/Science & Nature.6dd8cf2c.svg",
+    "static/media/Science: Computers.svg": "/trivia-game/static/media/Science: Computers.0762b505.svg",
+    "static/media/Science: Mathematics.svg": "/trivia-game/static/media/Science: Mathematics.10063cfa.svg",
+    "static/media/Sports.svg": "/trivia-game/static/media/Sports.a6a1bfd1.svg",
+    "static/media/Vehicles.svg": "/trivia-game/static/media/Vehicles.bb591067.svg",
+    "static/media/doBetter.svg": "/trivia-game/static/media/doBetter.88e8e369.svg",
+    "static/media/wellDone.svg": "/trivia-game/static/media/wellDone.5af2517c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4bc9de50.js",
+    "static/js/2.849cc7e1.chunk.js",
+    "static/css/main.5fdb6058.chunk.css",
+    "static/js/main.19cc5b5b.chunk.js"
+  ]
+}
