@@ -30,6 +30,10 @@ Esse projeto foi realizado durante o módulo de Front-End da [Trybe](https://www
 
 ---
 
+# App:
+
+![App](/trivia-game/83da9cf2-310b-4eb0-be1f-34741077.gif)
+
 # Avaliação :trophy:
 
-![Nota do Projeto](/JogoDeTriviaNota.png)
+![Nota do Projeto](/trivia-game/JogoDeTriviaNota.png)
