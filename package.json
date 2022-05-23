@@ -2,6 +2,7 @@
   "name": "trivia-test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://catherineteles.github.io/trivia-game",
   "engines": {
     "node": "16"
   },
@@ -9,6 +10,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/user-event": "^7.1.2",
     "crypto-js": "^4.0.0",
+    "gh-pages": "^4.0.0",
     "he": "^1.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -20,6 +22,8 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "cy": "cypress run",
     "cy:open": "cypress open",
     "start": "react-scripts start",
